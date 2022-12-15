@@ -14,8 +14,7 @@ input.addEventListener('input', (e) => {
   
 })
 
-  let toDoArr = []
-  let toDoImgArr=[]
+ 
 
 document.addEventListener('click', (event) => {
 
@@ -24,12 +23,11 @@ document.addEventListener('click', (event) => {
       toDo = document.createElement('li')
       toDo.innerText = input.value
       container.appendChild(toDo)
-      toDoArr.push(toDo)
 
       toDoimg=document.createElement('img')
       toDoimg.className='bin'
       toDo.appendChild(toDoimg)
-      toDoImgArr.push(toDoimg)
+      
       
       input.value = ''       
     }
@@ -39,12 +37,10 @@ document.addEventListener('click', (event) => {
 
 
 container.addEventListener('click', (event) => {
+    if (event.target.className === 'bin') {
+   event.target.parentElement.remove()  
+  }  
   event.target.classList.toggle('done')
-  for (let i = 0; i <toDoImgArr.length; i++) {
-    if (event.target === toDoImgArr[i]) {
-      toDoArr[i].remove()
-   }  
     
-  }
 
 })
